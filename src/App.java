@@ -1,9 +1,10 @@
 public class App {
     public static void main(String[] args) throws Exception {
         
-        User user = new User();
         char option;
         String loopControl;
+        User user = new User();
+        Converter integerConverter = new Converter();
 
         do {
             // menu list
@@ -17,16 +18,21 @@ public class App {
             // menu options
             switch(option){
                 case '1':
-                    int userInteger = user.inputInterger("Enter integer");
-                    //todo: create class to convert numbers
+                    int userInteger = user.inputInterger("Enter an integer: ");
+                    String binaryValue = integerConverter.report(userInteger);
+                    System.out.println(binaryValue);
                 break;
                 case '2':
+                    float userFloat = user.inputFloat("Enter a decimal: ");
+                    String ieeeValue = integerConverter.report(userFloat);
+                    System.out.println(ieeeValue);
                 break;
                 default:
                     System.out.println("Invalid input");
                 break;
             }
-            loopControl = user.inputString("Would you like to convert another number Y/N: ");
+            String request = String.format("%n%s", "Would you like to convert another number Y/N: ");
+            loopControl = user.inputString(request);
         } while (loopControl.equalsIgnoreCase("Y"));
     }
 }

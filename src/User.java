@@ -39,12 +39,35 @@ public class User {
         int value = 0;
         while(isInputBad){
             if(keyboard.hasNextInt()){
-                value = keyboard.nextInt();                
-                keyboard.nextLine();
+                value = keyboard.nextInt();     
                 isInputBad = false;
             } else {
                 System.out.print("Invalid input. Enter an integer number: ");
-            }
+            }                       
+            keyboard.nextLine();
+        }
+        return value;
+    }
+
+     // inputfloat method will request user to input a float
+     public float inputFloat(String message){
+        System.out.print(message);
+        float userInput = inputFloat();
+        return userInput;
+    }
+
+    // this method will check if input is float
+    private float inputFloat(){
+        boolean isInputBad = true;
+        float value = 0.0F;
+        while(isInputBad){
+            if(keyboard.hasNextFloat()){
+                value = keyboard.nextFloat();     
+                isInputBad = false;
+            } else {
+                System.out.print("Invalid input. Enter a decimal number: ");
+            }                       
+            keyboard.nextLine();
         }
         return value;
     }
